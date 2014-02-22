@@ -1,4 +1,5 @@
 #!/bin/bash
+# input should be stored in hosts.txt file
 hosts="$1"
 echo "Please enter your username:"
 read -s username

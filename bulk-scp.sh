@@ -1,6 +1,6 @@
 #!/bin/bash
 # input should be stored in hosts.txt and files.txt
-# usage: username hosts.txt files.txt
+# usage: hosts.txt files.txt
 hosts="$1"
 files="$2"
 echo "Please enter your username:"
