@@ -10,14 +10,15 @@ rm -rf ~/.local/share/Trash/info/*
 rm -rf ~/.local/share/Trash/expunged/*
 echo "Restarting ssh server..."
 sudo service ssh restart
+echo "Reconfiguring iptables..."
+./configure-iptables.sh
 echo "Change password now? (y/n)"
 read change
 if [ $change == "y" ]; then
-	ok="y"
-	while [ $ok != "n" ]; do
-		echo "Suggested password is $(cat /dev/urandom | tr -dc 'a-zA-Z0-9-_!@#$%^&*()_++{}|:<>?=' | fold -w 12 | head -n 1)"
-		echo "Regenerate password? (y/n)"
-		read ok
-	done
 	passwd
+fi
+echo "Change root password now? (y/n)"
+read change
+if [ $change == "y'" ]; then
+	sudo paswd
 fi
