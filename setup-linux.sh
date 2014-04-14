@@ -26,7 +26,7 @@ if [ $yn == "y" ] || [ $yn == "Y" ]; then
 	echo "Copying known good configuration..."
 	sudo cp sshd_config /etc/ssh/sshd_config
 fi
-echo "PLEASE REMOVE UNNEEDED USERS"
+echo "PLEASE REMOVE UNNEEDED USERS (separated by spaces)"
 cut -d: -f1 /etc/passwd
 read -p "Enter users to remove: " users
 if [ -f /etc/debian_version ]; then
@@ -42,7 +42,7 @@ else
 		sudo userdel -r $user
 	done
 fi
-echo "PLEASE KILL UNNEEDED/SUSPICOUS PROCESSES"
+echo "PLEASE KILL UNNEEDED/SUSPICOUS PROCESSES (separated by spaces)"
 sudo lsof -i
 read -p "Enter PID of processes to kill: " processes
 for process in $processes
@@ -50,3 +50,5 @@ do
 	echo "Killing $process..."
 	sudo kill $process
 done
+./search-immutable.sh
+echo "Finished!"
