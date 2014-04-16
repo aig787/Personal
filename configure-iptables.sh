@@ -8,7 +8,14 @@ iptables -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --set --name 
 iptables -A INPUT -p tcp --dport 22 -m recent --rcheck --seconds 30 --hitcount 4 --rttl --name SSH -j REJECT --reject-with tcp-reset
 iptables -A INPUT -p tcp --dport 22 -m recent --rcheck --seconds 30 --hitcount 3 --rttl --name SSH --rsource -j LOG --log-prefix "SSH Brute Force "
 iptables -A INPUT -p tcp --dport 22 -m recent --update --seconds 30 --hitcount 3 --rttl --name SSH --rsource -j REJECT --reject-with tcp-reset
+echo "Accepting SSH not already blockec..."
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+echo "Accepting FTP traffic..."
+iptables -A INPUT -p tcp --dport 21 -j ACCEPT
+#Only need on systems we can't just update the openssl package on
+#echo "Protecting against Heartbleed..."
+#iptables -A INPUT -p tcp --dport 443 -m u32 --u32 iptables -A INPUT -p tcp --dport 443 -m u32 --u32
+#iptables -t filter -A INPUT -p tcp --dport 443 -m u32 --u32 "52=0x18030000:0x1803FFFF" -j DROP
 read -p "Is this a web server? (y/n) " yn
 if [ $yn == "y" ] || [ $yn == "Y" ]; then
 	echo "Accepting web traffic..."

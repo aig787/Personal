@@ -1,4 +1,4 @@
-cd csci
+cd ~/Documents/csci
 git pull origin master
-cd ../Personal
+cd ~/Documents/Personal
 git pull origin master
