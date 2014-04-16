@@ -8,7 +8,7 @@ iptables -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --set --name 
 iptables -A INPUT -p tcp --dport 22 -m recent --rcheck --seconds 30 --hitcount 4 --rttl --name SSH -j REJECT --reject-with tcp-reset
 iptables -A INPUT -p tcp --dport 22 -m recent --rcheck --seconds 30 --hitcount 3 --rttl --name SSH --rsource -j LOG --log-prefix "SSH Brute Force "
 iptables -A INPUT -p tcp --dport 22 -m recent --update --seconds 30 --hitcount 3 --rttl --name SSH --rsource -j REJECT --reject-with tcp-reset
-echo "Accepting SSH not already blockec..."
+echo "Accepting SSH not already blocked..."
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 echo "Accepting FTP traffic..."
 iptables -A INPUT -p tcp --dport 21 -j ACCEPT
