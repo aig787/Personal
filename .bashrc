@@ -20,7 +20,8 @@ export HISTSIZE=10000
 export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=ignoreboth
 export EDITOR=/usr/bin/vim
-
+export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
+export LESS='-R '
 
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
@@ -37,6 +38,8 @@ alias clamscan-system='sudo clamscan -r / --move=/home/aaron/virus'
 alias bleachbit-system='bleachbit --clean google_chrome.* x11.* chromium.* deepscan.*'
 alias pull='~/Documents/git-pull.sh'
 alias push='~/Documents/git-push.sh'
+alias vimless='/usr/share/vim/vim74/macros/less.sh'
+alias starwars='telnet towel.blinkenlights.nl'
 # ex - archive extractor
 # usage: ex <file>
 ex ()
