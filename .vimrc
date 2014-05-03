@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved
 filetype off                  " required!
+set number
 syntax on
 nmap <F9> :SCCompile<cr>
 nmap <F10> :SCCompileRun<cr>

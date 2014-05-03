@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import subprocess, platform, fnmatch, os, time
 
+# Search linux system starting at specified root location for file matching
+# given pattern
 def linux_search(root, pattern):
     matches = []
     for root, dirs, files, in os.walk(root):
@@ -8,6 +10,8 @@ def linux_search(root, pattern):
             matches.append(os.path.join(root, filename))
     return matches
 
+# Strip name from each ownership.txt file listed in matches
+# Return list of "owners"
 def get_owners(matches):
     owners = []
     for match in matches:
@@ -17,6 +21,8 @@ def get_owners(matches):
             owners.append(owner)
     return owners
 
+# Check for ownership.txt files and for running services
+# Status list is packaged as tuples to send to the server
 def run_check():
     status = []
     if system == 'Linux':
@@ -36,6 +42,7 @@ def run_check():
         owners = []
         owners.extend(get_owners(linux_search('/home', 'ownership.txt')))
         return status,owners
+    # Lists running processes for now, but will have same functionality as Linux    case
     elif system == 'Windows':
         cmd = 'WMIC PROCESS get Caption,Commandline,Processid'
         proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
@@ -43,8 +50,10 @@ def run_check():
             print(line)
 
 system = platform.system()
+# List OS
 print(system + ' system')
 
+# Loop every 30 seconds
 while True:
     status, owners = run_check()
     print(status)
