@@ -44,10 +44,14 @@ def run_check():
         return status,owners
     # Lists running processes for now, but will have same functionality as Linux    case
     elif system == 'Windows':
-        cmd = 'WMIC PROCESS get Caption,Commandline,Processid'
-        proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-        for line in proc.stdout:
-            print(line)
+        import wmi
+        c = wmi.WMI()
+        for process in c.Win32_Process:
+            #Check processes here
+            name = process.Name
+            if name == "notepad.exe":
+                print("Notepad is running!")
+                status.append(('ssh', 'on'))
 
 system = platform.system()
 # List OS
