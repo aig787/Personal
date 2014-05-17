@@ -1,10 +1,12 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 # Docstring
 """Machine learning on iris data set with scikit-learning"""
 __author__ = "Aaron Griffin"
 
 from sklearn import datasets, svm, cross_validation
 import numpy as np
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 # Checks to see if there is at least 1 standard deviation between the predicted value and the rest
 def check_difference(prob, prediction):
@@ -40,15 +42,15 @@ SCORE = clf.score(x_test, y_test)
 # Computes accuracy of model after training based on cross-validation
 CROSS_SCORES = cross_validation.cross_val_score(clf, iris.data, iris.target, cv=5)
 print('Cross-Validation Test Accuracy: %0.2f (+/- %0.2f)' % (CROSS_SCORES.mean() * 100, CROSS_SCORES.std() * 2,))
-print('Model trained!')
+print ('Model trained!')
 
 # Prompts for user input for prediction data
-answer = raw_input('Enter parameters for prediction? (y/n) ')
+answer = input('Enter parameters for prediction? (y/n) ')
 while answer == 'y':
-    SLENGTH = raw_input('Enter a Sepal Length: ')
-    SWIDTH = raw_input('Enter a Sepal Width: ')
-    PLENGTH = raw_input('Enter a Petal Length: ')
-    PWIDTH = raw_input('Enter a Petal Width: ')
+    SLENGTH = input('Enter a Sepal Length: ')
+    SWIDTH = input('Enter a Sepal Width: ')
+    PLENGTH = input('Enter a Petal Length: ')
+    PWIDTH = input('Enter a Petal Width: ')
     data = [SLENGTH, SWIDTH, PLENGTH, PWIDTH]
     prediction = clf.predict(data)
     probabilities = clf.predict_proba(data)[0]
@@ -57,5 +59,5 @@ while answer == 'y':
     if cluster_list:
         # If probabilities are close print out what it's close to
         print_cluster(iris, cluster_list, probabilities)
-    print('{0:.2f}% chance it is a {1}.'.format(float(probabilities[prediction]) * 100, iris.target_names[prediction].tostring()))
-    answer = raw_input('Enter more parameters? (y/n) ')
+    print('{0:.2f}% chance it is a {1}.'.format(float(probabilities[prediction]) * 100, iris.target_names[prediction].tostring().decode()))
+    answer = input('Enter more parameters? (y/n) ')

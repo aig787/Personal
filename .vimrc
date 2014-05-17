@@ -26,6 +26,7 @@ Bundle 'FuzzyFinder'
 " non-GitHub repos
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'git://github.com/xuhdev/SingleCompile.git'
+Bundle 'git://github.com/davidhalter/jedi-vim'
 " Git repos on your local machine (i.e. when working on your own plugin)
 
 
