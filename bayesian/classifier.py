@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # Docstring
 """Machine learning on iris data set with scikit-learning"""
 __author__ = "Aaron Griffin"
