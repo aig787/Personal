@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import subprocess, platform, fnmatch, os, time
+import subprocess, platform, fnmatch, os, time, socket
 
 # Search linux system starting at specified root location for file matching
 # given pattern
@@ -21,6 +21,11 @@ def get_owners(matches):
             owners.append(owner)
     return owners
 
+def send_status(status):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect(("10.0.0.2", 3000))
+    s.sendall(str(status).encode())
+
 # Check for ownership.txt files and for running services
 # Status list is packaged as tuples to send to the server
 def run_check():
@@ -41,6 +46,7 @@ def run_check():
             status.append(('ssh', 'off'))
         owners = []
         owners.extend(get_owners(linux_search('/home', 'ownership.txt')))
+        send_status(status)
         return status,owners
     # Lists running processes for now, but will have same functionality as Linux    case
     elif system == 'Windows':

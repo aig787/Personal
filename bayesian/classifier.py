@@ -6,6 +6,9 @@ __author__ = "Aaron Griffin"
 from sklearn import datasets, svm, cross_validation
 import numpy as np
 import warnings
+
+# Filters out the deprecation warnings caused because scikit-learn
+# sometimes casts array indexes to floats
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 # Checks to see if there is at least 1 standard deviation between the predicted value and the rest
