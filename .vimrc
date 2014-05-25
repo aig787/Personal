@@ -7,6 +7,10 @@ nmap <F10> :SCCompileRun<cr>
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+if $COLORTERM == 'gnome-terminal'
+	set t_Co=256
+endif
+
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
@@ -20,6 +24,11 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'Lokaltog/vim-distinguished'
+Bundle 'nanotech/jellybeans.vim'
+set background=dark
+colorscheme jellybeans
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
@@ -41,3 +50,5 @@ filetype plugin indent on     " required!
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle commands are not allowed.
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1

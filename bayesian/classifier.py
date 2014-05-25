@@ -12,6 +12,7 @@ import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 # Checks to see if there is at least 1 standard deviation between the predicted value and the rest
+
 def check_difference(prob, prediction):
     standard_deviation = np.std(prob, axis=0)
     cluster = []
