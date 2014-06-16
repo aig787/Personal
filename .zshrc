@@ -76,7 +76,7 @@ export PATH="/home/aaron/node_modules/.bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:
 alias python="python3"
 alias push="/home/aaron/Documents/git-push.sh"
 alias pull="/home/aaron/Documents/git-pull.sh"
-alias activate="source bin/activate"
+alias activate="source ~/venv/bin/activate"
 
 [ -s "/home/aaron/.nvm/nvm.sh" ] && . "/home/aaron/.nvm/nvm.sh" # This loads nvm
 export PATH="$HOME/.rbenv/bin:$PATH"
