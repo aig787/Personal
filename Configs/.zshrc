@@ -80,8 +80,7 @@ alias activate="source ~/venv/bin/activate"
 alias remove-unused='sudo pacman -Rns $(pacman -Qdtq)'
 alias clamscan-user='sudo clamscan -r /home/aaron/ --move=/home/aaron/virus'
 alias clamscan-system='sudo clamscan -r / --move=/home/aaron/virus'
-alias bleachbit-system='bleachbit --clean google_chrome.* x11.* chromium.* deepscan.*'
-
+alias sysupgrade='sudo snp pacman -Syu'
 
 [ -s "/home/aaron/.nvm/nvm.sh" ] && . "/home/aaron/.nvm/nvm.sh" # This loads nvm
 export PATH="$HOME/.rbenv/bin:$PATH"
