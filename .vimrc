@@ -6,7 +6,8 @@ nmap <F9> :SCCompile<cr>
 nmap <F10> :SCCompileRun<cr>
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 if $COLORTERM == 'gnome-terminal'
 	set t_Co=256
 endif
