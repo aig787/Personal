@@ -46,3 +46,4 @@
 2014-10-16 08:40:25		Option changed: irc.server.freenode.ssl_dhkey_size = 1024  (default: (undefined))
 2014-10-16 08:41:26		Option changed: irc.server.freenode.autojoin = "#wwucs,#cs-support,#manjaro"  (default: (undefined))
 2014-10-16 08:41:32		Plugins loaded: alias, aspell, charset, exec, fifo, guile, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-10-16 08:42:51		Plugins loaded: alias, aspell, charset, exec, fifo, guile, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
